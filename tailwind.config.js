@@ -4,11 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        ltBgSmall: "#05386B",
+        ltBlueDeep: "#05386B",
+        ltBlueLight: "#379683",
         ltBgPrimary: "#5CDB95",
-        ltBgSecondaryOne: "#8EE4AF",
-        ltBgSecondaryTwo: "#379683",
-        ltTextColor: "#EDF5E1",
+        ltBgSecondary: "#8EE4AF",
+        ltWhite: "#EDF5E1",
+
+        dkBeige: "#CAC0B3",
+        dkBgPrimary: "#001233",
+        dkBgSecondary: "#001944",
+        dkCoral: "#FF595A",
       },
     },
   },
