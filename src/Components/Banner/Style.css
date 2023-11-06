@@ -1,0 +1,127 @@
+/* #app {
+  height: 100%;
+}
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+/* body {
+  background: #fff;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+} */
+
+/* html,
+body {
+  position: relative;
+  height: 100%;
+} */
+
+/* #app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}  */
+
+.swiper {
+  width: 460px;
+  height: 500px;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #edf5e1;
+}
+
+.swiper-slide:nth-child(1n) {
+  background-image: url("../../../src/assets/Banner/B1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide:nth-child(2n) {
+  background-image: url("../../../src/assets/Banner/B2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide:nth-child(3n) {
+  background-image: url("../../../src/assets/Banner/B3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide:nth-child(4n) {
+  background-image: url("../../../src/assets/Banner/B4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide:nth-child(5n) {
+  background-image: url("../../../src/assets/Banner/B5.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide:nth-child(6n) {
+  background-image: url("../../../src/assets/Banner/B6.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide:nth-child(7n) {
+  background-image: url("../../../src/assets/Banner/B7.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide:nth-child(8n) {
+  background-image: url("../../../src/assets/Banner/B8.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide:nth-child(9n) {
+  background-image: url("../../../src/assets/Banner/B9.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* .swiper-slide:nth-child(10n) {
+  background-color: rgb(54, 94, 77);
+} */
+
+@media screen and (max-width: 640px) {
+    .swiper {
+        width: 310px;
+        height: 350px;
+      }
+}
