@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-  return <AuthContext.Provider>{children}</AuthContext.Provider>;
+  const userInfo = {};
+  return (
+    <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 AuthProvider.propTypes = {

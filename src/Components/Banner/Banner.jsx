@@ -2,7 +2,7 @@ import Slider from "./Slider";
 
 const Banner = () => {
   return (
-    <div className="w-full flex flex-col bg-ltBgPrimary py-5 px-5 gap-10 md:gap-5 md:flex-row">
+    <div className="w-full flex flex-col-reverse bg-ltBgPrimary py-5 px-5 gap-10 md:gap-5 md:flex-row">
       <div className="w-full md:w-1/2 flex flex-col justify-center gap-3 md:gap-5">
         <h1 className="text-3xl md:text-5xl font-extrabold text-ltBlueDeep md:text-justify">
           &quot;Unlock the Power <br className="hidden md:inline" /> of

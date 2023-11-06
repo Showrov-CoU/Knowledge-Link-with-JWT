@@ -1,10 +1,14 @@
 import Banner from "../../Components/Banner/Banner";
+import Categories from "../../Components/Categories/Categories";
 
 const Home = () => {
   return (
     <div>
-      <div className="max-w-screen-xl mx-auto">
+      <div>
         <Banner></Banner>
+      </div>
+      <div>
+        <Categories></Categories>
       </div>
     </div>
   );

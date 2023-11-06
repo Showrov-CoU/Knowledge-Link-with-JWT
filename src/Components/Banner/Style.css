@@ -120,8 +120,8 @@ body {
 } */
 
 @media screen and (max-width: 640px) {
-    .swiper {
-        width: 310px;
-        height: 350px;
-      }
+  .swiper {
+    width: 240px;
+    height: 290px;
+  }
 }
