@@ -13,11 +13,14 @@ import Login from "./Components/Login/Login.jsx";
 import Register from "./Components/Register/Register.jsx";
 import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
 import Books from "./Components/Books/Books.jsx";
+import BookDetails from "./Components/BookDetails/BookDetails.jsx";
+import ErrorPage from "./Components/ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -40,6 +43,16 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/category/${params.name}`),
+      },
+      {
+        path: "/bookdetails/:id",
+        element: (
+          <PrivateRoute>
+            <BookDetails></BookDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/bookdetails/${params.id}`),
       },
       {
         path: "/AddBooks",
