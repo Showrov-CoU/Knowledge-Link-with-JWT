@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 const Category = ({ item }) => {
-  console.log(item);
+  //console.log(item);
   return (
     <div className="card card-compact bg-ltWhite shadow-xl">
       <figure>
@@ -9,7 +9,7 @@ const Category = ({ item }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{item.name}</h2>
-        <p>{item.description}</p>
+        <p className="text-justify">{item.description}</p>
         <div className="card-actions justify-end">
           <button className="btnlt">See Books</button>
         </div>

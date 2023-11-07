@@ -1,6 +1,17 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useContext } from "react";
+
+import userLogo from "../../../src/assets/Banner/user.png";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error.message));
+  };
   const links = (
     <>
       <li>
@@ -72,7 +83,41 @@ const Navbar = () => {
         <ul className="menu-horizontal px-1 space-x-5">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btnlt">Login</a>
+        {user ? (
+          <p className="text-sm font-semibold text-neutralDGrey dark:text-color-secondary mr-1 hidden md:block">
+            {user.displayName}
+          </p>
+        ) : (
+          ""
+        )}
+        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+          <div className="w-10 rounded-full mr-1">
+            <img src={user ? user?.photoURL : userLogo} />
+          </div>
+        </label>
+        {user ? (
+          <button onClick={handleLogout} className="btnlt px-2">
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button className="btnlt px-2">Login</button>
+          </Link>
+        )}
+        {/* <Link to="/login">
+          <button className="signbtn text-neutralSilver">Login</button>
+        </Link> */}
+        {/* <div className="flex flex-col md:flex-row items-center justify-center  md:gap-2 pl-1 md:px-2">
+          {option?.map((opt) => (
+            <button
+              key={opt.text}
+              onClick={() => setTheme(opt.text)}
+              className={` ${theme === opt.text && "text-sky-600 text-lg"}`}
+            >
+              <ion-icon name={opt.icon}></ion-icon>
+            </button>
+          ))}
+        </div> */}
       </div>
     </div>
   );

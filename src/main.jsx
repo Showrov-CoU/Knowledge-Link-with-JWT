@@ -9,6 +9,9 @@ import Home from "./Pages/Home/Home.jsx";
 import AddBooks from "./Pages/AddBooks/AddBooks.jsx";
 import AllBooks from "./Pages/AllBooks/AllBooks.jsx";
 import BorrowedBooks from "./Pages/BorrowedBooks/BorrowedBooks.jsx";
+import Login from "./Components/Login/Login.jsx";
+import Register from "./Components/Register/Register.jsx";
+import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,16 +23,36 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
         path: "/AddBooks",
-        element: <AddBooks></AddBooks>,
+        element: (
+          <PrivateRoute>
+            <AddBooks></AddBooks>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/AllBooks",
-        element: <AllBooks></AllBooks>,
+        element: (
+          <PrivateRoute>
+            <AllBooks></AllBooks>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/BorrowedBooks",
-        element: <BorrowedBooks></BorrowedBooks>,
+        element: (
+          <PrivateRoute>
+            <BorrowedBooks></BorrowedBooks>
+          </PrivateRoute>
+        ),
       },
     ],
   },
