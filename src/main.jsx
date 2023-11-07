@@ -12,6 +12,7 @@ import BorrowedBooks from "./Pages/BorrowedBooks/BorrowedBooks.jsx";
 import Login from "./Components/Login/Login.jsx";
 import Register from "./Components/Register/Register.jsx";
 import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
+import Books from "./Components/Books/Books.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,16 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/category/:name",
+        element: (
+          <PrivateRoute>
+            <Books></Books>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/category/${params.name}`),
       },
       {
         path: "/AddBooks",
