@@ -9,5 +9,5 @@ body {
 }
 
 .btnlt {
-  @apply bg-ltBlueDeep text-ltWhite px-5 md:px-9 py-2 rounded-md capitalize font-bold hover:opacity-80 ease-in duration-200;
+  @apply bg-ltBlueDeep dark:bg-dkCoral text-ltWhite px-5 md:px-9 py-2 rounded-md capitalize font-bold hover:opacity-80 ease-in duration-200;
 }

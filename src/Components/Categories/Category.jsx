@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const Category = ({ item }) => {
   //console.log(item);
   return (
-    <div className="card card-compact bg-ltWhite shadow-xl">
+    <div className="card card-compact bg-ltWhite text-ltBlueDeep shadow-xl">
       <figure>
         <img className="h-full w-full" src={item.image} alt="Shoes" />
       </figure>

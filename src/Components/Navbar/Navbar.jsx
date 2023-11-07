@@ -1,11 +1,56 @@
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
-import userLogo from "../../../src/assets/Banner/user.png";
+import defaultUserPhoto from "../../../src/assets/Banner/user.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+
+  const element = document.documentElement;
+  const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  // console.log(themeQuery);
+  const option = [
+    {
+      icon: "sunny",
+      text: "light",
+    },
+    {
+      icon: "moon",
+      text: "dark",
+    },
+  ];
+  const onWindowMatch = () => {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) && darkQuery.matches)
+    ) {
+      element.classList.add("dark");
+    } else {
+      element.classList.remove("dark");
+    }
+  };
+  onWindowMatch();
+  useEffect(() => {
+    switch (theme) {
+      case "dark":
+        element.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+        break;
+      case "light":
+        element.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+        break;
+      default:
+        localStorage.removeItem("theme", "dark");
+        onWindowMatch();
+        break;
+    }
+  }, [theme]);
 
   const handleLogout = () => {
     logOut()
@@ -47,7 +92,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-ltBgPrimary text-ltBlueDeep tracking-wide">
+    <div className="navbar bg-ltBgPrimary dark:bg-dkBgPrimary text-ltBlueDeep dark:text-dkBeige tracking-wide">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="lg:hidden">
@@ -84,7 +129,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <p className="text-sm font-semibold text-neutralDGrey dark:text-color-secondary mr-1 hidden md:block">
+          <p className="text-sm font-semibold text-ltBlueDeep dark:text-dkBeige text-center mr-1 hidden md:block">
             {user.displayName}
           </p>
         ) : (
@@ -92,7 +137,10 @@ const Navbar = () => {
         )}
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full mr-1">
-            <img src={user ? user?.photoURL : userLogo} />
+            <img
+              src={user ? user?.photoURL : defaultUserPhoto}
+              referrerPolicy="no-referrer"
+            />
           </div>
         </label>
         {user ? (
@@ -104,20 +152,18 @@ const Navbar = () => {
             <button className="btnlt px-2">Login</button>
           </Link>
         )}
-        {/* <Link to="/login">
-          <button className="signbtn text-neutralSilver">Login</button>
-        </Link> */}
-        {/* <div className="flex flex-col md:flex-row items-center justify-center  md:gap-2 pl-1 md:px-2">
+
+        <div className="h-fit flex flex-col md:flex-row items-center justify-center md:gap-2 md pl-2">
           {option?.map((opt) => (
             <button
               key={opt.text}
               onClick={() => setTheme(opt.text)}
-              className={` ${theme === opt.text && "text-sky-600 text-lg"}`}
+              className={` ${theme === opt.text && "text-sky-600 "}`}
             >
               <ion-icon name={opt.icon}></ion-icon>
             </button>
           ))}
-        </div> */}
+        </div>
       </div>
     </div>
   );

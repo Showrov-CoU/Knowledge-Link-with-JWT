@@ -2,16 +2,16 @@ import Slider from "./Slider";
 
 const Banner = () => {
   return (
-    <div className="w-full flex flex-col-reverse bg-ltBgPrimary py-5 px-5 gap-10 md:gap-5 md:flex-row">
+    <div className="w-full flex flex-col-reverse bg-ltBgPrimary dark:bg-dkBgPrimary py-5 px-5 gap-10 md:gap-5 md:flex-row">
       <div className="w-full md:w-1/2 flex flex-col justify-center gap-3 md:gap-5">
-        <h1 className="text-3xl md:text-5xl font-extrabold text-ltBlueDeep md:text-justify">
+        <h1 className="text-3xl md:text-5xl font-extrabold text-ltBlueDeep dark:text-dkCoral md:text-justify">
           &quot;Unlock the Power <br className="hidden md:inline" /> of
           Knowledge&quot;
         </h1>
-        <h3 className="text-lg md:text-xl font-bold text-ltBlueDeep">
+        <h3 className="text-lg md:text-xl font-bold text-ltBlueDeep dark:text-dkBeige">
           Efficient Management and Seamless User Experience
         </h3>
-        <p className="text-justify text-sm text-ltBlueDeep">
+        <p className="text-justify text-sm text-ltBlueDeep dark:text-dkBeige">
           Revolutionize library operations, streamline resource access, and
           empower your patrons. Our modern management solution is your key to a
           smarter, more efficient library experience. Explore limitless

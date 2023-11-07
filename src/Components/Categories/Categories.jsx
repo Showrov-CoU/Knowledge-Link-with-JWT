@@ -10,7 +10,7 @@ const Categories = () => {
       .then((res) => setCategories(res.data));
   }, []);
   return (
-    <div className="bg-ltBgSecondary text-ltBlueDeep py-5">
+    <div className="bg-ltBgSecondary dark:bg-dkBgSecondary text-ltBlueDeep dark:text-dkBeige py-5">
       <h1 className="text-center text-3xl font-bold">Our Categories</h1>
       <p className="text-center text-base font-medium pt-2">
         Dive into Our Six Book Categories <br className="inline md:block" /> for
