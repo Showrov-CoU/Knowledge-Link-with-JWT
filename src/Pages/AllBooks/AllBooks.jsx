@@ -8,19 +8,23 @@ const AllBooks = () => {
   const [allbooks, setAllBooks] = useState([]);
   useEffect(() => {
     // axios
-    //   .get("http://localhost:3000/books")
+    //   .get("https://knowledge-link-server.vercel.app/books")
     //   .then((res) => setAllBooks(res.data));
-    fetch("http://localhost:3000/books", { credentials: true })
+    fetch("https://knowledge-link-server.vercel.app/books", {
+      credentials: true,
+    })
       .then((res) => res.json())
       .then((data) => setAllBooks(data));
   }, []);
   console.log(allbooks);
   const handleSort = () => {
-    fetch(`http://localhost:3000/filter`,{credentials:true})
+    fetch(`https://knowledge-link-server.vercel.app/filter`, {
+      credentials: true,
+    })
       .then((res) => res.json())
       .then((data) => setAllBooks(data));
     // axios
-    //   .get(`http://localhost:3000/filterName`)
+    //   .get(`https://knowledge-link-server.vercel.app/filterName`)
     //   .then((res) => setAllBooks(res.data));
   };
   //console.log(allbooks);

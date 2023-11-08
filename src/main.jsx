@@ -43,7 +43,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/category/${params.name}`),
+          fetch(
+            `https://knowledge-link-server.vercel.app/category/${params.name}`
+          ),
       },
       {
         path: "/bookdetails/:id",
@@ -53,7 +55,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/bookdetails/${params.id}`),
+          fetch(
+            `https://knowledge-link-server.vercel.app/bookdetails/${params.id}`
+          ),
       },
       {
         path: "/AddBooks",
@@ -70,7 +74,7 @@ const router = createBrowserRouter([
             <AllBooks></AllBooks>
           </PrivateRoute>
         ),
-        // loader: () => fetch("http://localhost:3000/books"),
+        // loader: () => fetch("https://knowledge-link-server.vercel.app/books"),
       },
       {
         path: "/BorrowedBooks",
@@ -88,7 +92,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/bookdetails/${params.id}`),
+          fetch(
+            `https://knowledge-link-server.vercel.app/bookdetails/${params.id}`
+          ),
       },
     ],
   },

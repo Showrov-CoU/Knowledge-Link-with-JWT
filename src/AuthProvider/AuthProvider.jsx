@@ -48,14 +48,14 @@ const AuthProvider = ({ children }) => {
         setLoading(false);
 
         axios
-          .post("http://localhost:3000/jwt", loggedUser, {
+          .post("https://knowledge-link-server.vercel.app/jwt", loggedUser, {
             withCredentials: true,
           })
           .then((res) => console.log(res.data));
       } else {
         console.log("jdsjskkd", loggedUser);
         axios
-          .post("http://localhost:3000/logout", loggedUser, {
+          .post("https://knowledge-link-server.vercel.app/logout", loggedUser, {
             withCredentials: true,
           })
           .then((res) => console.log(res.data));
