@@ -1,15 +1,62 @@
 import { useLoaderData } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import axios from "axios";
+import toast from "react-hot-toast";
+
 const BookDetails = () => {
+  const { user } = useContext(AuthContext);
+  // console.log(user);
   const item = useLoaderData();
-  console.log(item);
+  // console.log(item);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const day = currentDate.getDate().toString().padStart(2, "0");
+    const month = currentDate.getMonth() + 1;
+    const formatMonth = String(month).padStart(2, "0");
+
+    const borrowedDate = `${year}-${formatMonth}-${day}`;
+    const returnDate = form.date.value;
+    const returnInfo = {
+      name,
+      id: item._id,
+      email,
+      borrowedDate,
+      returnDate,
+      image: item.image,
+      bookName: item.name,
+      category: item.category,
+    };
+
+    axios.post("http://localhost:3000/borrowed", returnInfo).then((res) => {
+      console.log(res);
+      if (res.data.insertedId) {
+        toast.success("Book borrowed successfully.");
+      } else {
+        toast.error("You have already borrowed this book");
+      }
+    });
+  };
+
   return (
     <div className="bg-ltBgSecondary dark:bg-dkBgSecondary min-h-fit py-5">
       <div className="w-full h-[360px] md:flex px-5 md:px-20">
         <div
           className="h-[30rem] md:h-full md:w-52 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
           //   style="background-image: url('/img/card-left.jpg')"
-          style={{ backgroundImage: `url(${item.image})`, backgroundPosition:"center" , backgroundRepeat:"no-repeat", backgroundSize:"cover" }}
+          style={{
+            backgroundImage: `url(${item.image})`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
         ></div>
         <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal bg-ltWhite">
           <div className="mb-8">
@@ -42,9 +89,76 @@ const BookDetails = () => {
               {item.author}
             </p>
             <ReactStars value={item.rating} count={5} size={24}></ReactStars>
-            <div className="flex justify-start gap-10 pt-2">
-              <button className="btnlt block">Borrow</button>
-              <button className="btnlt block">Read</button>
+            <div className="flex justify-start gap-10 pt-2 z-10">
+              {/* Open the modal using document.getElementById('ID').showModal() method */}
+              <button
+                className="btnlt"
+                onClick={() =>
+                  document.getElementById("my_modal_5").showModal()
+                }
+              >
+                Borrow
+              </button>
+              <dialog
+                id="my_modal_5"
+                className="modal modal-bottom sm:modal-middle"
+              >
+                <div className="modal-box">
+                  {/* <h3 className="font-bold text-lg">Hello!</h3> */}
+
+                  <form className="card-body" onSubmit={handleSubmit}>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Name</span>
+                      </label>
+                      <input
+                        type="name"
+                        value={user.displayName}
+                        name="name"
+                        className="input input-bordered"
+                        required
+                      />
+                    </div>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Email</span>
+                      </label>
+                      <input
+                        type="email"
+                        value={user.email}
+                        name="email"
+                        className="input input-bordered"
+                        required
+                      />
+                    </div>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Return Date</span>
+                      </label>
+                      <input
+                        type="date"
+                        placeholder="date"
+                        name="date"
+                        className="input input-bordered"
+                        required
+                      />
+                    </div>
+                    <div className="modal-action form-control">
+                      <button className="btnlt">Submit</button>
+                      {/* <form method="dialog">
+
+                        </form> */}
+                    </div>
+                  </form>
+                  <div className="modal-action mt-0">
+                    <form method="dialog">
+                      {/* if there is a button in form, it will close the modal */}
+                      <button className="btnlt">Close</button>
+                    </form>
+                  </div>
+                </div>
+              </dialog>
+              <button className="btnlt">Read</button>
             </div>
           </div>
 

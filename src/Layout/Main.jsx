@@ -13,7 +13,9 @@ const Main = () => {
         <Outlet></Outlet>
       </div>
       <Footer></Footer>
-      <Toaster></Toaster>
+      <div className="z-20">
+        <Toaster position="top-right"></Toaster>
+      </div>
     </div>
   );
 };
