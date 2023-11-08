@@ -9,6 +9,7 @@ import {
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
+import axios from "axios";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -39,10 +40,25 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
+      console.log(loggedUser);
       if (currentUser) {
         setUser(currentUser);
         setLoading(false);
+
+        axios
+          .post("http://localhost:3000/jwt", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => console.log(res.data));
       } else {
+        console.log("jdsjskkd", loggedUser);
+        axios
+          .post("http://localhost:3000/logout", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => console.log(res.data));
         setUser(null);
         setLoading(false);
       }

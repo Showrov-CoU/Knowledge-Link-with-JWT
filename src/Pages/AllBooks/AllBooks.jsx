@@ -10,13 +10,13 @@ const AllBooks = () => {
     // axios
     //   .get("http://localhost:3000/books")
     //   .then((res) => setAllBooks(res.data));
-    fetch("http://localhost:3000/books")
+    fetch("http://localhost:3000/books", { credentials: true })
       .then((res) => res.json())
       .then((data) => setAllBooks(data));
   }, []);
   console.log(allbooks);
   const handleSort = () => {
-    fetch(`http://localhost:3000/filter`)
+    fetch(`http://localhost:3000/filter`,{credentials:true})
       .then((res) => res.json())
       .then((data) => setAllBooks(data));
     // axios

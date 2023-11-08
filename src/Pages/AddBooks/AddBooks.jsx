@@ -25,6 +25,7 @@ const AddBooks = () => {
     };
     // console.log(newBook);
     fetch("http://localhost:3000/addbooks", {
+      credentials: "include",
       method: "POST",
       headers: {
         "content-type": "application/json",
