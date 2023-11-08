@@ -70,7 +70,7 @@ const router = createBrowserRouter([
             <AllBooks></AllBooks>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:3000/books"),
+        // loader: () => fetch("http://localhost:3000/books"),
       },
       {
         path: "/BorrowedBooks",
