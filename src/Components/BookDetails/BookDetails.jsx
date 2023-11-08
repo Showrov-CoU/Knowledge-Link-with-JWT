@@ -39,8 +39,13 @@ const BookDetails = () => {
       console.log(res);
       if (res.data.insertedId) {
         toast.success("Book borrowed successfully.");
+        form.reset();
       } else {
-        toast.error("You have already borrowed this book");
+        if (res.data.quantity) {
+          toast.error("Book is not available for borrowing.");
+        } else {
+          toast.error("You have already borrowed this book");
+        }
       }
     });
   };
