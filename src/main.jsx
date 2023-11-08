@@ -77,6 +77,8 @@ const router = createBrowserRouter([
             <BorrowedBooks></BorrowedBooks>
           </PrivateRoute>
         ),
+        // loader: ({ params }) =>
+        //   fetch(`http://localhost:3000/borrowBooks/${params.email}`),
       },
     ],
   },

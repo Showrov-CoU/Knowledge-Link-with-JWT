@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -98,7 +98,11 @@ const BookDetails = () => {
             <div className="flex justify-start gap-10 pt-2 z-10">
               {/* Open the modal using document.getElementById('ID').showModal() method */}
               <button
-                className={item.quantity !== 0 ? "btnlt" : "btnlt opacity-30 hover:opacity-30"}
+                className={
+                  item.quantity !== 0
+                    ? "btnlt"
+                    : "btnlt opacity-30 hover:opacity-30"
+                }
                 disabled={item.quantity !== 0 ? "" : "disabled"}
                 onClick={() =>
                   document.getElementById("my_modal_5").showModal()
