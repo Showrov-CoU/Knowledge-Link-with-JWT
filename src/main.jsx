@@ -15,6 +15,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
 import Books from "./Components/Books/Books.jsx";
 import BookDetails from "./Components/BookDetails/BookDetails.jsx";
 import ErrorPage from "./Components/ErrorPage/ErrorPage.jsx";
+import UpdateBook from "./Pages/UpdateBook/UpdateBook.jsx";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,7 @@ const router = createBrowserRouter([
             <AllBooks></AllBooks>
           </PrivateRoute>
         ),
+        loader: () => fetch("http://localhost:3000/books"),
       },
       {
         path: "/BorrowedBooks",
@@ -77,8 +79,16 @@ const router = createBrowserRouter([
             <BorrowedBooks></BorrowedBooks>
           </PrivateRoute>
         ),
-        // loader: ({ params }) =>
-        //   fetch(`http://localhost:3000/borrowBooks/${params.email}`),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateBook></UpdateBook>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/bookdetails/${params.id}`),
       },
     ],
   },

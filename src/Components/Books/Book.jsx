@@ -3,9 +3,11 @@ import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 const Book = ({ item }) => {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-ltWhite text-ltBlueDeep">
-      <img className="w-full h-96" src={item.image} alt="" />
-      <div className="px-2 md:px-6 py-4 space-y-2 flex flex-col">
+    <div className="h-fit max-w-sm rounded overflow-hidden shadow-lg bg-ltWhite text-ltBlueDeep">
+      <div className="h-[350px]">
+        <img className="w-full h-full" src={item.image} alt="" />
+      </div>
+      <div className="h-64 px-2 md:px-4 py-4 space-y-2 flex flex-col justify-between">
         <div className="font-bold text-lg mb-2">
           {item.name.slice(0, 25)}...
         </div>
