@@ -1,37 +1,54 @@
 // import { useLoaderData } from "react-router-dom";
-import useBooks from "../../Hooks/useBooks";
+// import useBooks from "../../Hooks/useBooks";
+import { useEffect, useState } from "react";
 import SingleBook from "./SingleBook";
 
 const AllBooks = () => {
   // const allbooks = useLoaderData();
-  // const [allbooks, setAllBooks] = useState([]);
-  // useEffect(() => {
-  //   // axios
-  //   //   .get("http://localhost:3000/books")
-  //   //   .then((res) => setAllBooks(res.data));
-  //   fetch("http://localhost:3000/books")
+  const [allbooks, setAllBooks] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState("");
+
+  const fetchBooks = async (sortBy) => {
+    try {
+      await fetch(`http://localhost:3000/books?sortBy=${sortBy}&order=desc`)
+        .then((res) => res.json())
+        .then((data) => setAllBooks(data));
+    } catch (error) {
+      console.log("error fetching books");
+    }
+  };
+
+  // const handleSort = () => {
+  //   fetch(`http://localhost:3000/filter`)
   //     .then((res) => res.json())
   //     .then((data) => {
-  //       setAllBooks(data);
   //       console.log(data);
   //     });
-  // }, []);
-  const { data: allbooks, isLoading, refetch } = useBooks();
-  console.log(allbooks);
-  const handleSort = () => {
-    fetch(`http://localhost:3000/filter`)
-      .then((res) => res.json())
-      .then((data) => {
-        refetch();
-        console.log(data);
-      });
-  };
-  console.log(allbooks);
-  if (isLoading) {
-    return (
-      <span className="block mx-auto mt-20 loading loading-dots loading-lg text-success"></span>
-    );
-  }
+  // };
+
+  useEffect(() => {
+    // axios
+    //   .get("http://localhost:3000/books")
+    //   .then((res) => setAllBooks(res.data));
+    // fetch("http://localhost:3000/books")
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setAllBooks(data);
+    //     console.log(data);
+    //   });
+    if (selectedFilter) {
+      fetchBooks(selectedFilter);
+    } else {
+      fetchBooks();
+    }
+  }, [selectedFilter]);
+  // const { data: allbooks, isLoading, refetch } = useBooks();
+
+  // if (loading) {
+  //   return (
+  //     <span className="block mx-auto mt-20 loading loading-dots loading-lg text-success"></span>
+  //   );
+  // }
   return (
     <div className="bg-ltBgSecondary dark:bg-dkBgSecondary px-5 md:px-24 py-10 min-h-96">
       <div className="flex items-center gap-5 md:gap-10 pb-3">
@@ -49,7 +66,7 @@ const AllBooks = () => {
             <li>
               <a
                 className="bg-ltBlueDeep dark:bg-dkCoral text-white hover:text-ltWhite"
-                onClick={handleSort}
+                onClick={() => setSelectedFilter("quantity")}
               >
                 Filter by Quantity
               </a>
