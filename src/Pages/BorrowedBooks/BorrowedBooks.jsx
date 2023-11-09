@@ -49,11 +49,11 @@ const BorrowedBooks = () => {
     });
   };
   return (
-    <div className="px-10 py-10 bg-ltBgSecondary dark:bg-dkBgSecondary">
+    <div className="px-2 md:px-10 py-10 bg-ltBgSecondary dark:bg-dkBgSecondary">
       <h1 className="text-2xl text-ltBlueDeep dark:text-dkBeige font-bold pb-3">
         Your Borrowed Books:{" "}
       </h1>
-      <div className="grid grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {items.map((item) => (
           <BookCard
             key={item._id}

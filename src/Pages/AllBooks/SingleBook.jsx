@@ -7,7 +7,7 @@ const SingleBook = ({ item }) => {
       <div className="h-80">
         <img className="w-full h-full" src={item.image} alt="" />
       </div>
-      <div className="h-64 px-2 md:px-2 py-4 space-y-2 flex flex-col justify-between">
+      <div className="h-fit md:h-64 px-2 md:px-2 py-4 space-y-2 flex flex-col justify-between">
         <p className="font-bold text-lg mb-2">{item.name?.slice(0, 25)}...</p>
         <p className="text-sm">Author: {item.author?.slice(0, 15)}...</p>
         <p className="text-sm">Category: {item.category?.slice(0, 15)}...</p>
