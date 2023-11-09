@@ -35,25 +35,20 @@ const BookDetails = () => {
       category: item.category,
     };
 
-    axios
-      .post(
-        "https://knowledge-link-server-bl3dxz0vd.vercel.app/borrowed",
-        returnInfo
-      )
-      .then((res) => {
-        console.log(res);
-        if (res.data.insertedId) {
-          toast.success("Book borrowed successfully.");
-          form.reset();
+    axios.post("http://localhost:3000/borrowed", returnInfo).then((res) => {
+      console.log(res);
+      if (res.data.insertedId) {
+        toast.success("Book borrowed successfully.");
+        form.reset();
+      } else {
+        if (res.data.quantity) {
+          console.log("yes", item);
+          toast.error("Book is not available for borrowing.");
         } else {
-          if (res.data.quantity) {
-            console.log("yes", item);
-            toast.error("Book is not available for borrowing.");
-          } else {
-            toast.error("You have already borrowed this book");
-          }
+          toast.error("You have already borrowed this book");
         }
-      });
+      }
+    });
   };
 
   return (

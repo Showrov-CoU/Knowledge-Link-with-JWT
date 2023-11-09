@@ -24,8 +24,7 @@ const AddBooks = () => {
       description,
     };
     // console.log(newBook);
-    fetch("https://knowledge-link-server-bl3dxz0vd.vercel.app/addbooks", {
-      credentials: "include",
+    fetch("http://localhost:3000/addbooks", {
       method: "POST",
       headers: {
         "content-type": "application/json",

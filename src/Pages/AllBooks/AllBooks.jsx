@@ -1,32 +1,37 @@
 // import { useLoaderData } from "react-router-dom";
+import useBooks from "../../Hooks/useBooks";
 import SingleBook from "./SingleBook";
-
-import { useEffect, useState } from "react";
 
 const AllBooks = () => {
   // const allbooks = useLoaderData();
-  const [allbooks, setAllBooks] = useState([]);
-  useEffect(() => {
-    // axios
-    //   .get("https://knowledge-link-server-bl3dxz0vd.vercel.app/books")
-    //   .then((res) => setAllBooks(res.data));
-    fetch("https://knowledge-link-server-bl3dxz0vd.vercel.app/books")
-      .then((res) => res.json())
-      .then((data) => {
-        setAllBooks(data);
-        console.log(data);
-      });
-  }, []);
+  // const [allbooks, setAllBooks] = useState([]);
+  // useEffect(() => {
+  //   // axios
+  //   //   .get("http://localhost:3000/books")
+  //   //   .then((res) => setAllBooks(res.data));
+  //   fetch("http://localhost:3000/books")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setAllBooks(data);
+  //       console.log(data);
+  //     });
+  // }, []);
+  const { data: allbooks, isLoading, refetch } = useBooks();
   console.log(allbooks);
   const handleSort = () => {
-    fetch(`https://knowledge-link-server-bl3dxz0vd.vercel.app/filter`)
+    fetch(`http://localhost:3000/filter`)
       .then((res) => res.json())
-      .then((data) => setAllBooks(data));
-    // axios
-    //   .get(`https://knowledge-link-server-bl3dxz0vd.vercel.app/filterName`)
-    //   .then((res) => setAllBooks(res.data));
+      .then((data) => {
+        refetch();
+        console.log(data);
+      });
   };
-  //console.log(allbooks);
+  console.log(allbooks);
+  if (isLoading) {
+    return (
+      <span className="block mx-auto mt-20 loading loading-dots loading-lg text-success"></span>
+    );
+  }
   return (
     <div className="bg-ltBgSecondary dark:bg-dkBgSecondary px-5 md:px-24 py-10 min-h-96">
       <div className="flex items-center gap-5 md:gap-10 pb-3">

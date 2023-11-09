@@ -8,9 +8,7 @@ const BorrowedBooks = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://knowledge-link-server-bl3dxz0vd.vercel.app/borrowBooks/${user.email}`
-    )
+    fetch(`http://localhost:3000/borrowBooks/${user.email}`)
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, [user.email]);
@@ -29,12 +27,9 @@ const BorrowedBooks = () => {
       confirmButtonText: "Yes, return it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://knowledge-link-server-bl3dxz0vd.vercel.app/borrowBooks/${id}`,
-          {
-            method: "DELETE",
-          }
-        )
+        fetch(`http://localhost:3000/borrowBooks/${id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((result) => {
             console.log(result);

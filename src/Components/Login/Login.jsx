@@ -21,7 +21,17 @@ const Login = () => {
         console.log(result.user);
         toast.success("Login successful! Welcome back.");
         e.target.reset();
-        navigate(location?.state ? location.state : "/");
+        fetch("http://localhost:3000/jwt", {
+          credentials: "include",
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ email: email }),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
+        // navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.message);

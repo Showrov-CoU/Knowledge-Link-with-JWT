@@ -11,7 +11,11 @@ const SingleBook = ({ item }) => {
         <p className="font-bold text-lg mb-2">{item.name?.slice(0, 25)}...</p>
         <p className="text-sm">Author: {item.author?.slice(0, 15)}...</p>
         <p className="text-sm">Category: {item.category?.slice(0, 15)}...</p>
-        <ReactStars value={item.rating} count={5} size={24}></ReactStars>
+        <ReactStars
+          value={Number(item.rating)}
+          count={5}
+          size={24}
+        ></ReactStars>
         <Link to={`/update/${item._id}`}>
           <button className="btnlt w-full">Update Book</button>
         </Link>

@@ -17,6 +17,14 @@ import BookDetails from "./Components/BookDetails/BookDetails.jsx";
 import ErrorPage from "./Components/ErrorPage/ErrorPage.jsx";
 import UpdateBook from "./Pages/UpdateBook/UpdateBook.jsx";
 
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,9 +51,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://knowledge-link-server-bl3dxz0vd.vercel.app/category/${params.name}`
-          ),
+          fetch(`http://localhost:3000/category/${params.name}`),
       },
       {
         path: "/bookdetails/:id",
@@ -55,9 +61,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://knowledge-link-server-bl3dxz0vd.vercel.app/bookdetails/${params.id}`
-          ),
+          fetch(`http://localhost:3000/bookdetails/${params.id}`),
       },
       {
         path: "/AddBooks",
@@ -74,7 +78,7 @@ const router = createBrowserRouter([
             <AllBooks></AllBooks>
           </PrivateRoute>
         ),
-        // loader: () => fetch("https://knowledge-link-server-bl3dxz0vd.vercel.app/books"),
+        // loader: () => fetch("http://localhost:3000/books"),
       },
       {
         path: "/BorrowedBooks",
@@ -92,9 +96,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://knowledge-link-server-bl3dxz0vd.vercel.app/bookdetails/${params.id}`
-          ),
+          fetch(`http://localhost:3000/bookdetails/${params.id}`),
       },
     ],
   },
@@ -102,8 +104,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
