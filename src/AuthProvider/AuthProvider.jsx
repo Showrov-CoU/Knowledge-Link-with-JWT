@@ -10,7 +10,6 @@ import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
 
-
 const googleProvider = new GoogleAuthProvider();
 
 export const AuthContext = createContext(null);
@@ -49,7 +48,7 @@ const AuthProvider = ({ children }) => {
 
         // axios
         //   .post(
-        //     "http://localhost:3000/jwt",
+        //     "https://knowledge-link-server.vercel.app/jwt",
         //     loggedUser,
         //     {
         //       withCredentials: true,
@@ -60,7 +59,7 @@ const AuthProvider = ({ children }) => {
         // console.log("jdsjskkd", loggedUser);
         // axios
         //   .post(
-        //     "http://localhost:3000/logout",
+        //     "https://knowledge-link-server.vercel.app/logout",
         //     loggedUser,
         //     {
         //       withCredentials: true,

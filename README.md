@@ -5,7 +5,7 @@ Live link: [https://knowledgelink-c1c83.web.app](https://knowledgelink-c1c83.web
 ## Features and Functionality
 
 `1.` User Authentication and Authorization:
-Implement a robust user authentication system that allows users to create accounts, log in securely, and manage their profiles. Ensure role-based authorization to distinguish between librarians and regular users, granting appropriate privileges.
+Implement a firebase user authentication system that allows users to create accounts, log in securely, and manage their profiles. Ensure role-based authorization to distinguish between librarians and regular users, granting appropriate privileges.
 
 `2.` Book Management:
 Create a comprehensive book management system that enables librarians to add, edit, and remove books from the library's collection. Include features like ISBN lookup, book details, cover images, and categorization.

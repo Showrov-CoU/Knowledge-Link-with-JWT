@@ -4,9 +4,12 @@ const useBooks = () => {
   const { data, isLoading, isFetching, refetch } = useQuery({
     queryKey: ["books"],
     queryFn: async () => {
-      const data = await fetch("http://localhost:3000/books", {
-        credentials: true,
-      });
+      const data = await fetch(
+        "https://knowledge-link-server.vercel.app/books",
+        {
+          credentials: true,
+        }
+      );
       return await data.json();
     },
   });

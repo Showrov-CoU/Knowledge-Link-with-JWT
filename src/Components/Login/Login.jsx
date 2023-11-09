@@ -21,7 +21,7 @@ const Login = () => {
         console.log(result.user);
         toast.success("Login successful! Welcome back.");
         e.target.reset();
-        fetch("http://localhost:3000/jwt", {
+        fetch("https://knowledge-link-server.vercel.app/jwt", {
           credentials: "include",
           method: "POST",
           headers: {

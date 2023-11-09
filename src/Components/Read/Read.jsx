@@ -1,5 +1,4 @@
 import { Link, useLoaderData } from "react-router-dom";
-import auth from "./../../Firebase/firebase.config";
 
 const Read = () => {
   const item = useLoaderData();

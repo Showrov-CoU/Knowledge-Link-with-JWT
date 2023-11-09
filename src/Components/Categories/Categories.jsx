@@ -6,7 +6,7 @@ const Categories = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/categories")
+      .get("https://knowledge-link-server.vercel.app/categories")
       .then((res) => setCategories(res.data));
   }, []);
   return (

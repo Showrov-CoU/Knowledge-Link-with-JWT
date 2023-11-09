@@ -10,7 +10,9 @@ const AllBooks = () => {
 
   const fetchBooks = async (sortBy) => {
     try {
-      await fetch(`http://localhost:3000/books?sortBy=${sortBy}&order=desc`)
+      await fetch(
+        `https://knowledge-link-server.vercel.app/books?sortBy=${sortBy}&order=desc`
+      )
         .then((res) => res.json())
         .then((data) => setAllBooks(data));
     } catch (error) {
@@ -19,7 +21,7 @@ const AllBooks = () => {
   };
 
   // const handleSort = () => {
-  //   fetch(`http://localhost:3000/filter`)
+  //   fetch(`https://knowledge-link-server.vercel.app/filter`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);
@@ -28,9 +30,9 @@ const AllBooks = () => {
 
   useEffect(() => {
     // axios
-    //   .get("http://localhost:3000/books")
+    //   .get("https://knowledge-link-server.vercel.app/books")
     //   .then((res) => setAllBooks(res.data));
-    // fetch("http://localhost:3000/books")
+    // fetch("https://knowledge-link-server.vercel.app/books")
     //   .then((res) => res.json())
     //   .then((data) => {
     //     setAllBooks(data);

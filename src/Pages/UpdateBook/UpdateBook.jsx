@@ -27,7 +27,10 @@ const UpdateBook = () => {
     };
     //console.log(updateBook);
     axios
-      .put(`http://localhost:3000/books/${item._id}`, updateBook)
+      .put(
+        `https://knowledge-link-server.vercel.app/books/${item._id}`,
+        updateBook
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
