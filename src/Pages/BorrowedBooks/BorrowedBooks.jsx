@@ -9,10 +9,7 @@ const BorrowedBooks = () => {
 
   useEffect(() => {
     fetch(
-      `https://knowledge-link-server.vercel.app/borrowBooks/${user.email}`,
-      {
-        credentials: true,
-      }
+      `https://knowledge-link-server-bl3dxz0vd.vercel.app/borrowBooks/${user.email}`
     )
       .then((res) => res.json())
       .then((data) => setItems(data));
@@ -32,10 +29,12 @@ const BorrowedBooks = () => {
       confirmButtonText: "Yes, return it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://knowledge-link-server.vercel.app/borrowBooks/${id}`, {
-          credentials: true,
-          method: "DELETE",
-        })
+        fetch(
+          `https://knowledge-link-server-bl3dxz0vd.vercel.app/borrowBooks/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((result) => {
             console.log(result);

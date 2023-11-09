@@ -36,7 +36,10 @@ const BookDetails = () => {
     };
 
     axios
-      .post("https://knowledge-link-server.vercel.app/borrowed", returnInfo)
+      .post(
+        "https://knowledge-link-server-bl3dxz0vd.vercel.app/borrowed",
+        returnInfo
+      )
       .then((res) => {
         console.log(res);
         if (res.data.insertedId) {

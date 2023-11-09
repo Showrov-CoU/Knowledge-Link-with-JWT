@@ -28,7 +28,7 @@ const UpdateBook = () => {
     //console.log(updateBook);
     axios
       .put(
-        `https://knowledge-link-server.vercel.app/books/${item._id}`,
+        `https://knowledge-link-server-bl3dxz0vd.vercel.app/books/${item._id}`,
         updateBook
       )
       .then((res) => {

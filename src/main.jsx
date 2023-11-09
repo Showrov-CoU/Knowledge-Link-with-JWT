@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://knowledge-link-server.vercel.app/category/${params.name}`
+            `https://knowledge-link-server-bl3dxz0vd.vercel.app/category/${params.name}`
           ),
       },
       {
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://knowledge-link-server.vercel.app/bookdetails/${params.id}`
+            `https://knowledge-link-server-bl3dxz0vd.vercel.app/bookdetails/${params.id}`
           ),
       },
       {
@@ -74,7 +74,7 @@ const router = createBrowserRouter([
             <AllBooks></AllBooks>
           </PrivateRoute>
         ),
-        // loader: () => fetch("https://knowledge-link-server.vercel.app/books"),
+        // loader: () => fetch("https://knowledge-link-server-bl3dxz0vd.vercel.app/books"),
       },
       {
         path: "/BorrowedBooks",
@@ -93,7 +93,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://knowledge-link-server.vercel.app/bookdetails/${params.id}`
+            `https://knowledge-link-server-bl3dxz0vd.vercel.app/bookdetails/${params.id}`
           ),
       },
     ],

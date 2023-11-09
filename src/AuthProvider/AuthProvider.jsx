@@ -48,16 +48,24 @@ const AuthProvider = ({ children }) => {
         setLoading(false);
 
         axios
-          .post("https://knowledge-link-server.vercel.app/jwt", loggedUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://knowledge-link-server-bl3dxz0vd.vercel.app/jwt",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => console.log(res.data));
       } else {
         console.log("jdsjskkd", loggedUser);
         axios
-          .post("https://knowledge-link-server.vercel.app/logout", loggedUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://knowledge-link-server-bl3dxz0vd.vercel.app/logout",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => console.log(res.data));
         setUser(null);
         setLoading(false);

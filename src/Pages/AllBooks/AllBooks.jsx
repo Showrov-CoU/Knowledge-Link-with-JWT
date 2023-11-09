@@ -8,23 +8,22 @@ const AllBooks = () => {
   const [allbooks, setAllBooks] = useState([]);
   useEffect(() => {
     // axios
-    //   .get("https://knowledge-link-server.vercel.app/books")
+    //   .get("https://knowledge-link-server-bl3dxz0vd.vercel.app/books")
     //   .then((res) => setAllBooks(res.data));
-    fetch("https://knowledge-link-server.vercel.app/books", {
-      credentials: true,
-    })
+    fetch("https://knowledge-link-server-bl3dxz0vd.vercel.app/books")
       .then((res) => res.json())
-      .then((data) => setAllBooks(data));
+      .then((data) => {
+        setAllBooks(data);
+        console.log(data);
+      });
   }, []);
   console.log(allbooks);
   const handleSort = () => {
-    fetch(`https://knowledge-link-server.vercel.app/filter`, {
-      credentials: true,
-    })
+    fetch(`https://knowledge-link-server-bl3dxz0vd.vercel.app/filter`)
       .then((res) => res.json())
       .then((data) => setAllBooks(data));
     // axios
-    //   .get(`https://knowledge-link-server.vercel.app/filterName`)
+    //   .get(`https://knowledge-link-server-bl3dxz0vd.vercel.app/filterName`)
     //   .then((res) => setAllBooks(res.data));
   };
   //console.log(allbooks);
