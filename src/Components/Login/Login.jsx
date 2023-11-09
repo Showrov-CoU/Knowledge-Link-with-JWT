@@ -31,7 +31,7 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then((data) => console.log(data));
-        // navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.message);

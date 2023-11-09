@@ -22,6 +22,7 @@ import {
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
+import Read from "./Components/Read/Read.jsx";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,16 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <BookDetails></BookDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/bookdetails/${params.id}`),
+      },
+      {
+        path: "/read/:id",
+        element: (
+          <PrivateRoute>
+            <Read></Read>
           </PrivateRoute>
         ),
         loader: ({ params }) =>
