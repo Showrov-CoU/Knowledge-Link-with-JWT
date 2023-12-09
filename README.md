@@ -20,3 +20,6 @@ Implement JWT for securing the application. Use JWT to generate and validate tok
 
 `5.` Responsive Design:
 Ensure the website is responsive, adapting to various screen sizes and devices (e.g., desktop, tablet, mobile). A responsive design will provide a seamless user experience, making it accessible to a wider audience.
+
+## Technology Used
+- TailwindCSS, Daisy UI, ReactJS, Firebase, NodeJS, ExpressJS, mongoDB
